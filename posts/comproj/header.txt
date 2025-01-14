@@ -1,1 +1,1 @@
-Comproj
+Comproj - Private chatting system
