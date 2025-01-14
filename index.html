@@ -239,35 +239,40 @@
 	<!-- Portfolio Modal Start -->
 
 	<div class="modal fade" id="portfolioModal" tabindex="-1" aria-labelledby="portfolioModal" aria-hidden="true">
-		<div class="modal-dialog">
+		<div class="modal-dialog modal-lg modal-dialog-centered">
 			<div class="modal-content">
-				<div class="modal-header">
-					<h5 class="modal-title" id="modalLabel">Loading title...</h5>
-					<button type="button" class="btn-close" data-bs-dismiss="portfolioModal" aria-label="Close"></button>
+				<div class="modal-header bg-primary text-white">
+					<h5 class="modal-title fw-bold" id="modalLabel">Loading...</h5>
+					<button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
 				</div>
-				<div class="modal-body">
-					Loading content...
+				<div class="modal-body p-4">
+					Loading...
+				</div>
+				<div class="modal-footer">
+					<button type="button" class="btn btn-primary">View Project</button>
 				</div>
 			</div>
 		</div>
 	</div>
 
 	<!-- Portfolio Modal End -->
-
 	<script>
-		 function postModal(post) {
-			$.get('posts/' + post + '/header.txt', function(data) {
-				$('#modalLabel').text(data);
+		function postModal(post) {
+			$.getJSON('posts/' + post + '/details.json', function(data) {
+				$('#modalLabel').text(data.title);
+				$.get('posts/' + post + '/content.html', function(contentData) {
+					$('.modal-body').html(`
+						<img src="${data.image}" alt="Project Image" class="img-fluid rounded mb-3">
+						<div>${contentData}</div>
+						<a href="${data.link}" target="_blank" class="btn btn-primary">View Project</a>
+					`);
+				});
 			});
-			
-			$.get('posts/' + post + '/content.txt', function(data) {
-				$('.modal-body').html(data);
-			});
-
 			var modal = new bootstrap.Modal(document.getElementById('portfolioModal'));
 			modal.show();
 		};
 	</script>
+	
 
 	<!--/ Section Portfolio End /-->
 
