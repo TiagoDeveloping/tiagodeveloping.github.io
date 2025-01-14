@@ -269,8 +269,12 @@
 				});
 			});
 			var modal = new bootstrap.Modal(document.getElementById('portfolioModal'));
-			modal.show();
+			modal.toggle();
 		};
+		function closeModal() {
+			var modal = new bootstrap.Modal(document.getElementById('portfolioModal'));
+			modal.toggle();
+		}
 	</script>
 	
 
