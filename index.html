@@ -249,7 +249,7 @@
 					Loading...
 				</div>
 				<div class="modal-footer">
-					<button type="button" class="btn btn-primary">View Project</button>
+					<a id="viewProjBtn" target="_blank" class="btn btn-primary">View Project</a>
 				</div>
 			</div>
 		</div>
@@ -264,8 +264,8 @@
 					$('.modal-body').html(`
 						<img src="${data.image}" alt="Project Image" class="img-fluid rounded mb-3">
 						<div>${contentData}</div>
-						<a href="${data.link}" target="_blank" class="btn btn-primary">View Project</a>
 					`);
+					$('#viewProjBtn').href(`${data.link}`);
 				});
 			});
 			var modal = new bootstrap.Modal(document.getElementById('portfolioModal'));
@@ -273,7 +273,7 @@
 		};
 		function closeModal() {
 			var modal = new bootstrap.Modal(document.getElementById('portfolioModal'));
-			modal.toggle();
+			modal.hide();
 		}
 	</script>
 	
