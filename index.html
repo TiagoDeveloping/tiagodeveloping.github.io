@@ -265,12 +265,12 @@
 						<img src="${data.image}" alt="Project Image" class="img-fluid rounded mb-3">
 						<div>${contentData}</div>
 					`);
-					if (data.link != '') {
-						document.getElementById("viewProjBtn").classList.remove("d-none");
-						document.getElementById("viewProjBtn").setAttribute("href", data.link);
-					} else {
+					if (data.link == "") {
 						document.getElementById("viewProjBtn").setAttribute("href", "#");
 						document.getElementById("viewProjBtn").classList.add("d-none");
+					} else {
+						document.getElementById("viewProjBtn").classList.remove("d-none");
+						document.getElementById("viewProjBtn").setAttribute("href", data.link);
 					}
 				});
 			});
