@@ -265,7 +265,13 @@
 						<img src="${data.image}" alt="Project Image" class="img-fluid rounded mb-3">
 						<div>${contentData}</div>
 					`);
-					document.getElementById("viewProjBtn").setAttribute("href", data.link);
+					if (data.link != '') {
+						document.getElementById("viewProjBtn").classList.remove("d-none");
+						document.getElementById("viewProjBtn").setAttribute("href", data.link);
+					} else {
+						document.getElementById("viewProjBtn").setAttribute("href", "#");
+						document.getElementById("viewProjBtn").classList.add("d-none");
+					}
 				});
 			});
 			$('#portfolioModal').modal('show');
